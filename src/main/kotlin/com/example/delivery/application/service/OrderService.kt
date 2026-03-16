@@ -21,11 +21,11 @@ open class OrderService(
 
     fun create(userId: Long, dishIds: List<Long>): Order {
         userRepository.findById(userId)
-            ?: throw NotFoundException("User with id=$userId not found")
+            ?: throw InvalidOrderStateException("User with id=$userId not found")
 
         val dishes = dishIds.map { dishId ->
             dishRepository.findById(dishId)
-                ?: throw NotFoundException("Dish with id=$dishId not found")
+                ?: throw InvalidOrderStateException("Dish with id=$dishId not found")
         }
 
         val order = Order(
