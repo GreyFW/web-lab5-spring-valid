@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import com.example.delivery.application.exception.AlreadyExistsException
 import org.springframework.http.converter.HttpMessageNotReadableException
+import org.springframework.dao.DataIntegrityViolationException
 
 private val logger = KotlinLogging.logger {}
 
@@ -64,4 +65,13 @@ class GlobalExceptionHandler {
             .status(HttpStatus.BAD_REQUEST)
             .body(ErrorResponse(400, "Некорректное тело запроса"))
     }
+
+    @ExceptionHandler(DataIntegrityViolationException::class)
+    fun handleDataIntegrity(ex: DataIntegrityViolationException): ResponseEntity<ErrorResponse> {
+        logger.warn { "Нарушение уникальности: ${ex.message}" }
+        return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+            .body(ErrorResponse(409, "Ресурс с такими данными уже существует"))
+    }
+
 }

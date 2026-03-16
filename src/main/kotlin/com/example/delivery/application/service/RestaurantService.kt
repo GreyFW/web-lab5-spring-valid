@@ -7,6 +7,7 @@ import com.example.delivery.domain.model.Restaurant
 import com.example.delivery.domain.port.RestaurantRepositoryPort
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 open class RestaurantService(
@@ -14,10 +15,10 @@ open class RestaurantService(
 ) {
     private val logger = KotlinLogging.logger {}
 
+    @Transactional
     fun create(restaurant: Restaurant): Restaurant {
         val existing = restaurantRepository.findByName(restaurant.name)
         if (existing != null) throw AlreadyExistsException("Restaurant with name='${restaurant.name}' already exists")
-
         val created = restaurantRepository.create(restaurant)
         logger.info { "Создан ресторан id=${created.id}, name='${created.name}'" }
         return created
