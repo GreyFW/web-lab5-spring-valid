@@ -9,9 +9,9 @@ object DishMapper {
     fun toDomain(request: DishCreateRequest, restaurantId: Long) =
         Dish(
             id = null,
-            name = request.name,
-            description = request.description,
-            price = request.price,
+            name = request.name ?: "",
+            description = request.description ?: "",
+            price = request.price ?: java.math.BigDecimal.ZERO,
             isAvailable = request.isAvailable,
             restaurantId = restaurantId
         )
@@ -19,9 +19,9 @@ object DishMapper {
     fun toDomain(id: Long, request: DishUpdateRequest, restaurantId: Long) =
         Dish(
             id = id,
-            name = request.name,
-            description = request.description,
-            price = request.price,
+            name = request.name ?: "",
+            description = request.description ?: "",
+            price = request.price ?: java.math.BigDecimal.ZERO,
             isAvailable = request.isAvailable,
             restaurantId = restaurantId
         )

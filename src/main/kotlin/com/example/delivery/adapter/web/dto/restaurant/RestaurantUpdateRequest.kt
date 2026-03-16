@@ -4,8 +4,8 @@ import jakarta.validation.constraints.NotBlank
 
 data class RestaurantUpdateRequest(
     @field:NotBlank(message = "Название не может быть пустым")
-    val name: String,
+    val name: String? = null,
 
     @field:NotBlank(message = "Адрес не может быть пустым")
-    val address: String
+    val address: String? = null
 )

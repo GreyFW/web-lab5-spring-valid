@@ -6,13 +6,13 @@ import jakarta.validation.constraints.NotBlank
 data class UserUpdateRequest(
     @field:Email(message = "Некорректный формат email")
     @field:NotBlank(message = "Email не может быть пустым")
-    val email: String,
+    val email: String? = null,
 
     @field:NotBlank(message = "Имя не может быть пустым")
-    val firstName: String,
+    val firstName: String? = null,
 
     @field:NotBlank(message = "Фамилия не может быть пустой")
-    val lastName: String,
+    val lastName: String? = null,
 
     val isActive: Boolean = true
 )

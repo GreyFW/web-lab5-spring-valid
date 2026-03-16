@@ -7,14 +7,14 @@ import java.math.BigDecimal
 
 data class DishCreateRequest(
     @field:NotBlank(message = "Название не может быть пустым")
-    val name: String,
+    val name: String? = null,
 
     @field:NotBlank(message = "Описание не может быть пустым")
-    val description: String,
+    val description: String? = null,
 
     @field:NotNull(message = "Цена обязательна")
     @field:Min(value = 1, message = "Цена должна быть больше 0")
-    val price: BigDecimal,
+    val price: BigDecimal? = null,
 
     val isAvailable: Boolean = true
 )

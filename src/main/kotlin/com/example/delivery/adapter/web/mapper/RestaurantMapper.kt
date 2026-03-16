@@ -7,10 +7,10 @@ import com.example.delivery.domain.model.Restaurant
 
 object RestaurantMapper {
     fun toDomain(request: RestaurantCreateRequest) =
-        Restaurant(id = null, name = request.name, address = request.address)
+        Restaurant(id = null, name = request.name ?: "", address = request.address ?: "")
 
     fun toDomain(id: Long, request: RestaurantUpdateRequest) =
-        Restaurant(id = id, name = request.name, address = request.address)
+        Restaurant(id = id, name = request.name ?: "", address = request.address ?: "")
 
     fun toResponse(restaurant: Restaurant) =
         RestaurantResponse(id = restaurant.id!!, name = restaurant.name, address = restaurant.address)
