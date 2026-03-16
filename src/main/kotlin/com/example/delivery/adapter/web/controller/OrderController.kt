@@ -18,7 +18,7 @@ class OrderController(
 ) {
     @PostMapping
     fun create(@Valid @RequestBody request: OrderCreateRequest): ResponseEntity<OrderResponse> {
-        val order = orderService.create(request.userId, request.dishIds)
+        val order = orderService.create(request.userId!!, request.dishIds!!)
         return ResponseEntity.status(HttpStatus.CREATED).body(OrderMapper.toResponse(order))
     }
 
