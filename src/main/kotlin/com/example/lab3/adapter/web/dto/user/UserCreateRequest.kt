@@ -1,16 +1,18 @@
-package com.example.lab3.adapter.web.dto.user
+package com.example.delivery.adapter.web.dto.user
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 
 data class UserCreateRequest(
-    @field:Email
-    @field:NotBlank
+    @field:Email(message = "Некорректный формат email")
+    @field:NotBlank(message = "Email не может быть пустым")
     val email: String,
 
-    @field:NotBlank val firstName: String,
+    @field:NotBlank(message = "Имя не может быть пустым")
+    val firstName: String,
 
-    @field:NotBlank val lastName: String,
+    @field:NotBlank(message = "Фамилия не может быть пустой")
+    val lastName: String,
 
     val isActive: Boolean = true
 )

@@ -1,7 +1,6 @@
 package com.example.lab3.application.service
 
 import com.example.lab3.application.exception.AlreadyExistsException
-import com.example.lab3.application.exception.NotFoundByIdException
 import com.example.lab3.domain.model.Dish
 import com.example.lab3.domain.port.DishRepositoryPort
 import com.example.lab3.domain.port.RestaurantRepositoryPort

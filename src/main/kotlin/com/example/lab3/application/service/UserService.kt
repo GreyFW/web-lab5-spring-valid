@@ -3,7 +3,6 @@ package com.example.lab3.application.service
 import com.example.lab3.application.exception.AlreadyExistsException
 import com.example.lab3.domain.model.User
 import com.example.lab3.domain.port.UserRepositoryPort
-import com.example.lab3.application.exception.NotFoundByIdException
 import org.springframework.stereotype.Service
 
 @Service

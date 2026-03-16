@@ -3,7 +3,6 @@ package com.example.lab3.adapter.persistence.mock
 import com.example.lab3.application.exception.*
 import com.example.lab3.domain.model.Dish
 import com.example.lab3.domain.port.DishRepositoryPort
-import com.example.lab3.application.exception.NotFoundByIdException
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
 

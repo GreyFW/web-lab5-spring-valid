@@ -4,5 +4,6 @@ import com.example.lab3.domain.model.OrderStatus
 import jakarta.validation.constraints.NotNull
 
 data class OrderStatusUpdateRequest(
-    @field:NotNull val status: OrderStatus
+    @field:NotNull(message = "Статус обязателен")
+    val status: OrderStatus
 )

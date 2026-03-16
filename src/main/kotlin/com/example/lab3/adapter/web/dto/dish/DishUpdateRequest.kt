@@ -1,12 +1,20 @@
-package com.example.lab3.adapter.web.dto.dish
+package com.example.delivery.adapter.web.dto.dish
 
+import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
-import org.jetbrains.annotations.NotNull
+import jakarta.validation.constraints.NotNull
 import java.math.BigDecimal
 
 data class DishUpdateRequest(
-    @field:NotBlank val name: String,
-    @field:NotBlank val description: String,
+    @field:NotBlank(message = "Название не может быть пустым")
+    val name: String,
+
+    @field:NotBlank(message = "Описание не может быть пустым")
+    val description: String,
+
+    @field:NotNull(message = "Цена обязательна")
+    @field:Min(value = 1, message = "Цена должна быть больше 0")
     val price: BigDecimal,
-    val isAvailable: Boolean
+
+    val isAvailable: Boolean = true
 )

@@ -1,59 +1,58 @@
 package com.example.lab3.adapter.web
 
-import com.example.lab3.application.exception.AlreadyExistsException
-import com.example.lab3.application.exception.NotFoundByIdException
-import com.example.lab3.application.exception.ValidationException
 import com.example.lab3.adapter.web.dto.ErrorResponse
-import org.springframework.http.HttpHeaders
+import com.example.lab3.adapter.web.dto.ValidationErrorResponse
+import com.example.lab3.application.exception.AlreadyExistsException
+import com.example.lab3.application.exception.AppException
+import com.example.lab3.application.exception.InvalidOrderStateException
+import com.example.lab3.application.exception.NotFoundException
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
-import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import org.springframework.web.context.request.WebRequest
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
+
+private val logger = KotlinLogging.logger {}
 
 @RestControllerAdvice
-class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
+class GlobalExceptionHandler {
 
-    @ExceptionHandler(NotFoundByIdException::class)
-    fun handleNotFound(ex: NotFoundByIdException): ResponseEntity<ErrorResponse> =
-        ResponseEntity(
-            ErrorResponse(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.reasonPhrase, ex.message ?: "Not found"),
-            HttpStatus.NOT_FOUND
-        )
+    @ExceptionHandler(AppException::class)
+    fun handleAppException(e: AppException): ResponseEntity<ErrorResponse> {
+        val status = when (e) {
+            is NotFoundException -> HttpStatus.NOT_FOUND
+            is AlreadyExistsException -> HttpStatus.CONFLICT
+            is InvalidOrderStateException -> HttpStatus.BAD_REQUEST
+        }
+        logger.warn { "${e::class.simpleName}: ${e.message}" }
+        return ResponseEntity
+            .status(status)
+            .body(ErrorResponse(status.value(), e.message))
+    }
 
-    @ExceptionHandler(AlreadyExistsException::class)
-    fun handleAlreadyExists(ex: AlreadyExistsException): ResponseEntity<ErrorResponse> =
-        ResponseEntity(
-            ErrorResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.reasonPhrase, ex.message ?: "Already exists"),
-            HttpStatus.BAD_REQUEST
-        )
+    @ExceptionHandler(MethodArgumentNotValidException::class)
+    fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ValidationErrorResponse> {
+        val errors = ex.bindingResult.fieldErrors.associate {
+            it.field to (it.defaultMessage ?: "Некорректное значение")
+        }
+        logger.warn { "Ошибка валидации: $errors" }
+        return ResponseEntity
+            .status(HttpStatus.BAD_REQUEST)
+            .body(
+                ValidationErrorResponse(
+                    status = HttpStatus.BAD_REQUEST.value(),
+                    message = "Ошибка валидации",
+                    errors = errors
+                )
+            )
+    }
 
-    @ExceptionHandler(ValidationException::class)
-    fun handleValidation(ex: ValidationException): ResponseEntity<ErrorResponse> =
-        ResponseEntity(
-            ErrorResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.reasonPhrase, ex.message ?: "Validation error"),
-            HttpStatus.BAD_REQUEST
-        )
-
-    override fun handleHttpMessageNotReadable(
-        ex: HttpMessageNotReadableException, headers: HttpHeaders, status: HttpStatusCode, request: WebRequest
-    ): ResponseEntity<Any> = ResponseEntity(
-        ErrorResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.reasonPhrase,
-            ex.mostSpecificCause?.message ?: "Failed to read request"),
-        HttpStatus.BAD_REQUEST
-    )
-
-    override fun handleMethodArgumentNotValid(
-        ex: MethodArgumentNotValidException, headers: HttpHeaders, status: HttpStatusCode, request: WebRequest
-    ): ResponseEntity<Any> {
-        val msg = ex.bindingResult.fieldErrors.joinToString("; ") { "${it.field} ${it.defaultMessage}" }
-        return ResponseEntity(
-            ErrorResponse(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.reasonPhrase, msg),
-            HttpStatus.BAD_REQUEST
-        )
+    @ExceptionHandler(Exception::class)
+    fun handleUnexpected(e: Exception): ResponseEntity<ErrorResponse> {
+        logger.error(e) { "Непредвиденная ошибка" }
+        return ResponseEntity
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body(ErrorResponse(500, "Внутренняя ошибка сервера"))
     }
 }

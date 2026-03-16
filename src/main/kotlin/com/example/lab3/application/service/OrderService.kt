@@ -1,7 +1,5 @@
 package com.example.lab3.application.service
 
-import com.example.lab3.application.exception.NotFoundByIdException
-import com.example.lab3.application.exception.ValidationException
 import com.example.lab3.domain.model.Order
 import com.example.lab3.domain.model.OrderStatus
 import com.example.lab3.domain.port.DishRepositoryPort

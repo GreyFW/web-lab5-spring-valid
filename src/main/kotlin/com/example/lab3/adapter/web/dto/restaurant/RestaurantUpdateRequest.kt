@@ -1,8 +1,11 @@
-package com.example.lab3.adapter.web.dto.restaurant
+package com.example.delivery.adapter.web.dto.restaurant
 
 import jakarta.validation.constraints.NotBlank
 
 data class RestaurantUpdateRequest(
-    @field:NotBlank val name: String,
-    @field:NotBlank val address: String
+    @field:NotBlank(message = "Название не может быть пустым")
+    val name: String,
+
+    @field:NotBlank(message = "Адрес не может быть пустым")
+    val address: String
 )

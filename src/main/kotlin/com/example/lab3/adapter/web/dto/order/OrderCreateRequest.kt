@@ -1,9 +1,12 @@
-package com.example.lab3.adapter.web.dto.order
+package com.example.delivery.adapter.web.dto.order
 
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull
 
 data class OrderCreateRequest(
-    @field:NotNull val userId: Long,
-    @field:NotEmpty val dishIds: List<Long>
+    @field:NotNull(message = "userId обязателен")
+    val userId: Long,
+
+    @field:NotEmpty(message = "Заказ должен содержать хотя бы одно блюдо")
+    val dishIds: List<Long>
 )

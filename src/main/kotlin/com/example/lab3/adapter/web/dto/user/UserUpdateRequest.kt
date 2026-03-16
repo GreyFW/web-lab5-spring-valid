@@ -1,20 +1,18 @@
-package com.example.lab3.adapter.web.dto.user
+package com.example.delivery.adapter.web.dto.user
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
-import org.jetbrains.annotations.NotNull
 
-data class UserUpdateRequest (
-    @field:Email
-    @field:NotBlank
+data class UserUpdateRequest(
+    @field:Email(message = "Некорректный формат email")
+    @field:NotBlank(message = "Email не может быть пустым")
     val email: String,
 
-    @field:NotBlank
+    @field:NotBlank(message = "Имя не может быть пустым")
     val firstName: String,
 
-    @field:NotBlank
+    @field:NotBlank(message = "Фамилия не может быть пустой")
     val lastName: String,
 
-    @field:NotNull
-    val isActive: Boolean
+    val isActive: Boolean = true
 )
