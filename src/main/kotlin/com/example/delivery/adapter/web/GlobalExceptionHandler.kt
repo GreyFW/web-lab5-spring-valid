@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import com.example.delivery.application.exception.AlreadyExistsException
+import org.springframework.http.converter.HttpMessageNotReadableException
 
 private val logger = KotlinLogging.logger {}
 
@@ -54,5 +55,13 @@ class GlobalExceptionHandler {
         return ResponseEntity
             .status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ErrorResponse(500, "Внутренняя ошибка сервера"))
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException::class)
+    fun handleNotReadable(ex: HttpMessageNotReadableException): ResponseEntity<ErrorResponse> {
+        logger.warn { "Нечитаемое тело запроса: ${ex.message}" }
+        return ResponseEntity
+            .status(HttpStatus.BAD_REQUEST)
+            .body(ErrorResponse(400, "Некорректное тело запроса"))
     }
 }
