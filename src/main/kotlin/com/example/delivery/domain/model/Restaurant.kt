@@ -1,4 +1,4 @@
-package com.example.lab3.domain.model
+package com.example.delivery.domain.model
 
 data class Restaurant(
     val id: Long?,

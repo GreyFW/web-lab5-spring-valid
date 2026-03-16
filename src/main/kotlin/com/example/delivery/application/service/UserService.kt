@@ -1,9 +1,9 @@
-package com.example.lab3.application.service
+package com.example.delivery.application.service
 
-import com.example.lab3.application.exception.AlreadyExistsException
-import com.example.lab3.application.exception.NotFoundException
-import com.example.lab3.domain.model.User
-import com.example.lab3.domain.port.UserRepositoryPort
+import com.example.delivery.application.exception.AlreadyExistsException
+import com.example.delivery.application.exception.NotFoundException
+import com.example.delivery.domain.model.User
+import com.example.delivery.domain.port.UserRepositoryPort
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
 

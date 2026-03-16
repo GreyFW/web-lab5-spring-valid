@@ -1,10 +1,10 @@
-package com.example.lab3.adapter.web
+package com.example.delivery.adapter.web
 
-import com.example.lab3.adapter.web.dto.ErrorResponse
-import com.example.lab3.adapter.web.dto.ValidationErrorResponse
-import com.example.lab3.application.exception.AppException
-import com.example.lab3.application.exception.InvalidOrderStateException
-import com.example.lab3.application.exception.NotFoundException
+import com.example.delivery.adapter.web.dto.ErrorResponse
+import com.example.delivery.adapter.web.dto.ValidationErrorResponse
+import com.example.delivery.application.exception.AppException
+import com.example.delivery.application.exception.InvalidOrderStateException
+import com.example.delivery.application.exception.NotFoundException
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

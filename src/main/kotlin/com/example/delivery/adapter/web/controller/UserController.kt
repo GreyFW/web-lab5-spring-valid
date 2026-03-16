@@ -1,9 +1,8 @@
-package com.example.lab3.adapter.web.controller
+package com.example.delivery.adapter.web.controller
 
-import com.example.lab3.adapter.web.dto.user.*
-import com.example.lab3.adapter.web.mapper.UserMapper
-import com.example.lab3.application.service.UserService
-
+import com.example.delivery.adapter.web.dto.user.*
+import com.example.delivery.adapter.web.mapper.UserMapper
+import com.example.delivery.application.service.UserService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -18,10 +17,8 @@ class UserController(
     fun create(
         @Valid @RequestBody request: UserCreateRequest
     ): ResponseEntity<UserResponse> {
-        val result = userService.create( UserMapper.toDomain(request) )
-
+        val result = userService.create(UserMapper.toDomain(request))
         val response = UserMapper.toResponse(result.user)
-
         return if (result.isCreated) {
             ResponseEntity.status(HttpStatus.CREATED).body(response)
         } else {
@@ -30,13 +27,8 @@ class UserController(
     }
 
     @GetMapping("/{id}")
-    fun getById(
-        @PathVariable id: Long
-    ): UserResponse {
-        val user = userService.getById(id)
-
-        return UserMapper.toResponse(user)
-    }
+    fun getById(@PathVariable id: Long): UserResponse =
+        UserMapper.toResponse(userService.getById(id))
 
     @GetMapping
     fun getAll(): List<UserResponse> =
@@ -46,18 +38,12 @@ class UserController(
     fun update(
         @PathVariable id: Long,
         @Valid @RequestBody request: UserUpdateRequest
-    ): UserResponse {
-        val updated = userService.update(
-            id, UserMapper.toDomain(id, request) )
-
-        return UserMapper.toResponse(updated)
-    }
+    ): UserResponse =
+        UserMapper.toResponse(userService.update(id, UserMapper.toDomain(id, request)))
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun delete(
-        @PathVariable id: Long
-    ) {
+    fun delete(@PathVariable id: Long) {
         userService.delete(id)
     }
 }

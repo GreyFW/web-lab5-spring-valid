@@ -1,7 +1,7 @@
-package com.example.lab3.adapter.persistence.jpa.entity
+package com.example.delivery.adapter.persistence.jpa.entity
 
-import com.example.lab3.domain.model.Order
-import com.example.lab3.domain.model.OrderStatus
+import com.example.delivery.domain.model.Order
+import com.example.delivery.domain.model.OrderStatus
 import jakarta.persistence.*
 import java.time.LocalDateTime
 

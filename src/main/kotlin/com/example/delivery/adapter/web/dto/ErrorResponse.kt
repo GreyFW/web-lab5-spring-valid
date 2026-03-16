@@ -1,4 +1,4 @@
-package com.example.lab3.adapter.web.dto
+package com.example.delivery.adapter.web.dto
 
 import java.time.LocalDateTime
 

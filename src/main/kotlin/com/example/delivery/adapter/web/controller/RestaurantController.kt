@@ -1,14 +1,14 @@
-package com.example.lab3.adapter.web.controller
+package com.example.delivery.adapter.web.controller
 
-import com.example.lab3.adapter.web.dto.dish.DishCreateRequest
-import com.example.lab3.adapter.web.dto.dish.DishResponse
-import com.example.lab3.adapter.web.dto.restaurant.RestaurantCreateRequest
-import com.example.lab3.adapter.web.dto.restaurant.RestaurantResponse
-import com.example.lab3.adapter.web.dto.restaurant.RestaurantUpdateRequest
-import com.example.lab3.adapter.web.mapper.DishMapper
-import com.example.lab3.adapter.web.mapper.RestaurantMapper
-import com.example.lab3.application.service.DishService
-import com.example.lab3.application.service.RestaurantService
+import com.example.delivery.adapter.web.dto.dish.DishCreateRequest
+import com.example.delivery.adapter.web.dto.dish.DishResponse
+import com.example.delivery.adapter.web.dto.restaurant.RestaurantCreateRequest
+import com.example.delivery.adapter.web.dto.restaurant.RestaurantResponse
+import com.example.delivery.adapter.web.dto.restaurant.RestaurantUpdateRequest
+import com.example.delivery.adapter.web.mapper.DishMapper
+import com.example.delivery.adapter.web.mapper.RestaurantMapper
+import com.example.delivery.application.service.DishService
+import com.example.delivery.application.service.RestaurantService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

@@ -1,6 +1,6 @@
-package com.example.lab3.adapter.persistence.jpa.entity
+package com.example.delivery.adapter.persistence.jpa.entity
 
-import com.example.lab3.domain.model.Restaurant
+import com.example.delivery.domain.model.Restaurant
 import jakarta.persistence.*
 
 @Entity

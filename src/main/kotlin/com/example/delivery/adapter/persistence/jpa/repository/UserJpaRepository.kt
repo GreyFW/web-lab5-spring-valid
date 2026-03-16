@@ -1,6 +1,6 @@
-package com.example.lab3.adapter.persistence.jpa.repository
+package com.example.delivery.adapter.persistence.jpa.repository
 
-import com.example.lab3.adapter.persistence.jpa.entity.UserEntity
+import com.example.delivery.adapter.persistence.jpa.entity.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserJpaRepository : JpaRepository<UserEntity, Long> {

@@ -1,4 +1,4 @@
-package com.example.lab3.application.exception
+package com.example.delivery.application.exception
 
 sealed class AppException(message: String) : RuntimeException(message)
 

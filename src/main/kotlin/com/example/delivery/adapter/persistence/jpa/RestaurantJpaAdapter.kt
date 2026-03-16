@@ -1,10 +1,10 @@
-package com.example.lab3.adapter.persistence.jpa
+package com.example.delivery.adapter.persistence.jpa
 
-import com.example.lab3.adapter.persistence.jpa.entity.RestaurantEntity
-import com.example.lab3.adapter.persistence.jpa.repository.RestaurantJpaRepository
-import com.example.lab3.domain.model.Dish
-import com.example.lab3.domain.model.Restaurant
-import com.example.lab3.domain.port.RestaurantRepositoryPort
+import com.example.delivery.adapter.persistence.jpa.entity.RestaurantEntity
+import com.example.delivery.adapter.persistence.jpa.repository.RestaurantJpaRepository
+import com.example.delivery.domain.model.Dish
+import com.example.delivery.domain.model.Restaurant
+import com.example.delivery.domain.port.RestaurantRepositoryPort
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
 

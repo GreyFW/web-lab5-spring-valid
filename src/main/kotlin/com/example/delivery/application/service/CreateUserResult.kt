@@ -1,6 +1,6 @@
-package com.example.lab3.application.service
+package com.example.delivery.application.service
 
-import com.example.lab3.domain.model.User
+import com.example.delivery.domain.model.User
 
 data class CreateUserResult(
     val user: User,

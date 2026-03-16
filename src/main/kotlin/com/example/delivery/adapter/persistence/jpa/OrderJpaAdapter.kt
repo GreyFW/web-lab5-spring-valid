@@ -1,12 +1,12 @@
-package com.example.lab3.adapter.persistence.jpa
+package com.example.delivery.adapter.persistence.jpa
 
-import com.example.lab3.adapter.persistence.jpa.entity.OrderEntity
-import com.example.lab3.adapter.persistence.jpa.repository.DishJpaRepository
-import com.example.lab3.adapter.persistence.jpa.repository.OrderJpaRepository
-import com.example.lab3.adapter.persistence.jpa.repository.UserJpaRepository
-import com.example.lab3.domain.model.Order
-import com.example.lab3.domain.model.OrderStatus
-import com.example.lab3.domain.port.OrderRepositoryPort
+import com.example.delivery.adapter.persistence.jpa.entity.OrderEntity
+import com.example.delivery.adapter.persistence.jpa.repository.DishJpaRepository
+import com.example.delivery.adapter.persistence.jpa.repository.OrderJpaRepository
+import com.example.delivery.adapter.persistence.jpa.repository.UserJpaRepository
+import com.example.delivery.domain.model.Order
+import com.example.delivery.domain.model.OrderStatus
+import com.example.delivery.domain.port.OrderRepositoryPort
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
 

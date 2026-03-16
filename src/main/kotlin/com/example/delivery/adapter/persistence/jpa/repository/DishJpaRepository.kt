@@ -1,6 +1,6 @@
-package com.example.lab3.adapter.persistence.jpa.repository
+package com.example.delivery.adapter.persistence.jpa.repository
 
-import com.example.lab3.adapter.persistence.jpa.entity.DishEntity
+import com.example.delivery.adapter.persistence.jpa.entity.DishEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param

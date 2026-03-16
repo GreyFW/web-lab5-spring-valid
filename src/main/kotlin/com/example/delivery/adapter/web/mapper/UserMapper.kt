@@ -1,7 +1,7 @@
-package com.example.lab3.adapter.web.mapper
+package com.example.delivery.adapter.web.mapper
 
-import com.example.lab3.adapter.web.dto.user.*
-import com.example.lab3.domain.model.User
+import com.example.delivery.adapter.web.dto.user.*
+import com.example.delivery.domain.model.User
 
 object UserMapper {
     fun toDomain(request: UserCreateRequest): User =

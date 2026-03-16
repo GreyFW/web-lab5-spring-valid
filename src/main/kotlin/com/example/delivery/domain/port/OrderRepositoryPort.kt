@@ -1,7 +1,7 @@
-package com.example.lab3.domain.port
+package com.example.delivery.domain.port
 
-import com.example.lab3.domain.model.Order
-import com.example.lab3.domain.model.OrderStatus
+import com.example.delivery.domain.model.Order
+import com.example.delivery.domain.model.OrderStatus
 
 interface OrderRepositoryPort {
     fun create(order: Order): Order

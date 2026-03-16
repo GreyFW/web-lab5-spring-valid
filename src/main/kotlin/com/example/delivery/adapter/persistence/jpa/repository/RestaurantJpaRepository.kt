@@ -1,6 +1,6 @@
-package com.example.lab3.adapter.persistence.jpa.repository
+package com.example.delivery.adapter.persistence.jpa.repository
 
-import com.example.lab3.adapter.persistence.jpa.entity.RestaurantEntity
+import com.example.delivery.adapter.persistence.jpa.entity.RestaurantEntity
 import org.springframework.data.jpa.repository.EntityGraph
 import org.springframework.data.jpa.repository.JpaRepository
 

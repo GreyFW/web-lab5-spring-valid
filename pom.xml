@@ -160,7 +160,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.example.lab3.Lab3ApplicationKt</mainClass>
+                    <mainClass>com.example.delivery.Lab3ApplicationKt</mainClass>
                 </configuration>
             </plugin>
 

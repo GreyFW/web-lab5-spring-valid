@@ -1,6 +1,6 @@
-package com.example.lab3.adapter.persistence.jpa.entity
+package com.example.delivery.adapter.persistence.jpa.entity
 
-import com.example.lab3.domain.model.Dish
+import com.example.delivery.domain.model.Dish
 import jakarta.persistence.*
 import java.math.BigDecimal
 

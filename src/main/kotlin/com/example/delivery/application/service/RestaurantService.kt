@@ -1,10 +1,10 @@
-package com.example.lab3.application.service
+package com.example.delivery.application.service
 
-import com.example.lab3.application.exception.AlreadyExistsException
-import com.example.lab3.application.exception.NotFoundException
-import com.example.lab3.domain.model.Dish
-import com.example.lab3.domain.model.Restaurant
-import com.example.lab3.domain.port.RestaurantRepositoryPort
+import com.example.delivery.application.exception.AlreadyExistsException
+import com.example.delivery.application.exception.NotFoundException
+import com.example.delivery.domain.model.Dish
+import com.example.delivery.domain.model.Restaurant
+import com.example.delivery.domain.port.RestaurantRepositoryPort
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
 

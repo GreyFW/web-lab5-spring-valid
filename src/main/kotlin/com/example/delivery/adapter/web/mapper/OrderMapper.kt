@@ -1,8 +1,8 @@
-package com.example.lab3.adapter.web.mapper
+package com.example.delivery.adapter.web.mapper
 
-import com.example.lab3.adapter.web.dto.order.OrderDishResponse
-import com.example.lab3.adapter.web.dto.order.OrderResponse
-import com.example.lab3.domain.model.Order
+import com.example.delivery.adapter.web.dto.order.OrderDishResponse
+import com.example.delivery.adapter.web.dto.order.OrderResponse
+import com.example.delivery.domain.model.Order
 
 object OrderMapper {
     fun toResponse(order: Order) = OrderResponse(

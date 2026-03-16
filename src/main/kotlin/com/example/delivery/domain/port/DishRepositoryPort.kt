@@ -1,6 +1,6 @@
-package com.example.lab3.domain.port
+package com.example.delivery.domain.port
 
-import com.example.lab3.domain.model.Dish
+import com.example.delivery.domain.model.Dish
 
 interface  DishRepositoryPort {
     // по CRUD

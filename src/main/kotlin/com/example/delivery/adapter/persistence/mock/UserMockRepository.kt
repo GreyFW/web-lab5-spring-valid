@@ -1,8 +1,8 @@
-package com.example.lab3.adapter.persistence.mock
+package com.example.delivery.adapter.persistence.mock
 
-import com.example.lab3.application.exception.*
-import com.example.lab3.domain.model.User
-import com.example.lab3.domain.port.UserRepositoryPort
+import com.example.delivery.application.exception.*
+import com.example.delivery.domain.model.User
+import com.example.delivery.domain.port.UserRepositoryPort
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
 

@@ -1,6 +1,6 @@
-package com.example.lab3.adapter.web.dto.order
+package com.example.delivery.adapter.web.dto.order
 
-import com.example.lab3.domain.model.OrderStatus
+import com.example.delivery.domain.model.OrderStatus
 import java.time.LocalDateTime
 
 data class OrderResponse(

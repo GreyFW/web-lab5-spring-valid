@@ -1,6 +1,4 @@
-package com.example.lab3.adapter.web.dto.restaurant
-
-import jakarta.validation.constraints.NotBlank
+package com.example.delivery.adapter.web.dto.restaurant
 
 data class RestaurantResponse(
     val id: Long,

@@ -1,11 +1,11 @@
-package com.example.lab3.adapter.web.controller
+package com.example.delivery.adapter.web.controller
 
-import com.example.lab3.adapter.web.dto.order.OrderCreateRequest
-import com.example.lab3.adapter.web.dto.order.OrderResponse
-import com.example.lab3.adapter.web.dto.order.OrderStatusUpdateRequest
-import com.example.lab3.adapter.web.mapper.OrderMapper
-import com.example.lab3.application.service.OrderService
-import com.example.lab3.domain.model.OrderStatus
+import com.example.delivery.adapter.web.dto.order.OrderCreateRequest
+import com.example.delivery.adapter.web.dto.order.OrderResponse
+import com.example.delivery.adapter.web.dto.order.OrderStatusUpdateRequest
+import com.example.delivery.adapter.web.mapper.OrderMapper
+import com.example.delivery.application.service.OrderService
+import com.example.delivery.domain.model.OrderStatus
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

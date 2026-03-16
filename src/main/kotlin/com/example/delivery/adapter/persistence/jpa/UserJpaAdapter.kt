@@ -1,9 +1,9 @@
-package com.example.lab3.adapter.persistence.jpa
+package com.example.delivery.adapter.persistence.jpa
 
-import com.example.lab3.adapter.persistence.jpa.entity.UserEntity
-import com.example.lab3.adapter.persistence.jpa.repository.UserJpaRepository
-import com.example.lab3.domain.model.User
-import com.example.lab3.domain.port.UserRepositoryPort
+import com.example.delivery.adapter.persistence.jpa.entity.UserEntity
+import com.example.delivery.adapter.persistence.jpa.repository.UserJpaRepository
+import com.example.delivery.domain.model.User
+import com.example.delivery.domain.port.UserRepositoryPort
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Repository
 
