@@ -1,14 +1,18 @@
 package com.example.lab3.application.service
 
 import com.example.lab3.application.exception.AlreadyExistsException
+import com.example.lab3.application.exception.NotFoundException
 import com.example.lab3.domain.model.User
 import com.example.lab3.domain.port.UserRepositoryPort
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
 
 @Service
 open class UserService(
     private val userRepository: UserRepositoryPort
 ) {
+    private val logger = KotlinLogging.logger {}
+
     fun create(user: User): CreateUserResult {
         val existing = userRepository.findByEmail(user.email)
 
@@ -16,19 +20,22 @@ open class UserService(
             CreateUserResult(existing, false)
         } else {
             val created = userRepository.create(user)
+            logger.info { "Создан пользователь id=${created.id}, email='${created.email}'" }
             CreateUserResult(created, true)
         }
     }
 
-    fun getById(id: Long): User =
-        userRepository.findById(id) ?: throw NotFoundByIdException("User", id)
+    fun getById(id: Long): User {
+        logger.info { "Запрос пользователя id=$id" }
+        return userRepository.findById(id) ?: throw NotFoundException("User with id=$id not found")
+    }
 
     fun update(id: Long, updatedUser: User): User {
-        val existingUser = userRepository.findById(id) ?: throw NotFoundByIdException("User", id)
+        val existingUser = userRepository.findById(id) ?: throw NotFoundException("User with id=$id not found")
 
         val userWithSameEmail = userRepository.findByEmail(updatedUser.email)
         if (userWithSameEmail != null && userWithSameEmail.id != id) {
-            throw AlreadyExistsException("User", "email", updatedUser.email)
+            throw AlreadyExistsException("User with email='${updatedUser.email}' already exists")
         }
 
         val userToSave = existingUser.copy(
@@ -37,12 +44,15 @@ open class UserService(
             lastName = updatedUser.lastName,
             isActive = updatedUser.isActive
         )
-        return userRepository.update(userToSave)
+        val updated = userRepository.update(userToSave)
+        logger.info { "Пользователь id=$id успешно обновлен" }
+        return updated
     }
 
     fun delete(id: Long) {
-        val existingUser = userRepository.findById(id) ?: throw NotFoundByIdException("User", id)
+        userRepository.findById(id) ?: throw NotFoundException("User with id=$id not found")
         userRepository.delete(id)
+        logger.info { "Удален пользователь id=$id" }
     }
 
     fun getAll(): List<User> = userRepository.findAll()

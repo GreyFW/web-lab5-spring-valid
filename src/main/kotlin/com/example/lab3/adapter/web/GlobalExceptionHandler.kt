@@ -2,7 +2,6 @@ package com.example.lab3.adapter.web
 
 import com.example.lab3.adapter.web.dto.ErrorResponse
 import com.example.lab3.adapter.web.dto.ValidationErrorResponse
-import com.example.lab3.application.exception.AlreadyExistsException
 import com.example.lab3.application.exception.AppException
 import com.example.lab3.application.exception.InvalidOrderStateException
 import com.example.lab3.application.exception.NotFoundException
